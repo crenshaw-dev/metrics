@@ -36,6 +36,7 @@ spec:
         - "--feature-gates=APIPriorityAndFairness=false"
         - "--audit-log-maxage=0"
         - "--audit-log-maxbackup=0"
+        - "--secure-port=4443"
         resources:
           requests:
             cpu: 100m
@@ -73,7 +74,7 @@ spec:
   ports:
   - port: 443
     protocol: TCP
-    targetPort: 443
+    targetPort: 4443
   selector:
     api: argoproj-metrics-poc
     apiserver: "true"

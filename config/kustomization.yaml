@@ -1,0 +1,6 @@
+resources:
+  - aggregated-apiserver.yaml
+  - apiservice.yaml
+  - controller-manager.yaml
+  - etcd.yaml
+  - rbac.yaml
