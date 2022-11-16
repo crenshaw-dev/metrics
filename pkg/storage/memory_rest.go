@@ -4,16 +4,18 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/argoproj/metrics/pkg/kubeclient"
-	"github.com/argoproj/metrics/pkg/metricproviders/prometheus"
-	"k8s.io/apimachinery/pkg/util/json"
 	"path/filepath"
 	"reflect"
 	"strings"
 	"sync"
 	"time"
 
-	prometheusv1 "github.com/argoproj/metrics/pkg/apis/prometheus/v1"
+	"k8s.io/apimachinery/pkg/util/json"
+	"k8s.io/apimachinery/pkg/util/uuid"
+
+	"github.com/argoproj/metrics/pkg/kubeclient"
+	"github.com/argoproj/metrics/pkg/metricproviders/prometheus"
+
 	"k8s.io/apimachinery/pkg/api/meta"
 	metainternalversion "k8s.io/apimachinery/pkg/apis/meta/internalversion"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -23,6 +25,8 @@ import (
 	"k8s.io/apimachinery/pkg/watch"
 	genericapirequest "k8s.io/apiserver/pkg/endpoints/request"
 	"k8s.io/apiserver/pkg/registry/rest"
+
+	prometheusv1 "github.com/argoproj/metrics/pkg/apis/prometheus/v1"
 )
 
 // ErrObjectNotExists means the file doesn't actually exist.
@@ -225,6 +229,7 @@ func (f *memoryREST) Create(
 		return nil, err
 	}
 	accessor.SetCreationTimestamp(metav1.Now())
+	accessor.SetUID(uuid.NewUUID())
 	key := f.objectMemoryKey(ctx, accessor.GetName())
 
 	if f.isNamespaced {
