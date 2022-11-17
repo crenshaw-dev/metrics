@@ -8,20 +8,20 @@ spec:
   #address: "http://localhost:9090"
   queries:
     - name: pod_cpu_line
-      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (pod)
+      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-.*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (pod)
     - name: pod_cpu_pie
-      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-*", container!="POD", image!="", container!="", container_name!="POD"}[5m])) by (pod)
+      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-.*", container!="POD", image!="", container!="", container_name!="POD"}[5m])) by (pod)
     - name: pod_memory_line
-      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-*", container!="POD", image!="", container!="", container_name!="POD"}[5m])) by (pod)
+      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-.*", container!="POD", image!="", container!="", container_name!="POD"}[5m])) by (pod)
     - name: pod_memory_pie
-      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-*", container!="POD", image!="", container!="", container_name!="POD"}[5m])) by (pod)
+      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-.*", container!="POD", image!="", container!="", container_name!="POD"}[5m])) by (pod)
     - name: container_cpu_line
-      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (container)
+      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-.*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (container)
     - name: container_cpu_pie
-      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-*", image!="",container!="POD", container!="", container_name!="POD"}[5m])) by (container)
+      query: sum(rate(container_cpu_usage_seconds_total{pod=~"guestbook-.*", image!="",container!="POD", container!="", container_name!="POD"}[5m])) by (container)
     - name: container_memory_line
-      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (container)
+      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-.*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (container)
     - name: container_memory_pie
-      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (container)
+      query: sum(rate(container_memory_usage_bytes{pod=~"guestbook-.*", image!="", container!="POD", container!="", container_name!="POD"}[5m])) by (container)
   step: 1m
   timeLength: 15m
