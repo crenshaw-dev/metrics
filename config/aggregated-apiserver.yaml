@@ -22,7 +22,7 @@ spec:
       containers:
       - name: apiserver
         image: zachaller/argoproj-metrics-poc
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         volumeMounts:
         - name: apiserver-certs
           mountPath: /apiserver.local.config/certificates

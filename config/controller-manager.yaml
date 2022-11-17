@@ -22,7 +22,7 @@ spec:
       containers:
       - name: controller
         image: zachaller/argoproj-metrics-poc
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         command:
         - "./controller-manager"
         args:
